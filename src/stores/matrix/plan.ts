@@ -1,12 +1,42 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { makeRequest } from '@/request/request'
+interface Strategy {
+    id: number;
+    domain_id: number;
+    name: string;
+    max_qty: number;
+    max_sl_tgt: number;
+    max_deployment: number;
+    max_indicator_access: number;
+    type: string;
+    max_brokers: number;
+    icon: string;
+    strategies: any; // Specify the type of strategies if known
+    invoice_item: null; // If this can be null or an object, adjust accordingly
+    offers: null; // Same as above
+  }
+  
+interface StrategyJoinedPlan {
+    id: number;
+    broker_id: number;
+    strategy_id: number;
+    domain_id: number;
+    lots: number;
+    re_entry: number;
+    re_entry_triggered: number;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
+  }
+
+  
 
 export const usePlansStore = defineStore('plans', () => {
   const endpoint = 'plans'
-  const plans = ref([])
-  const stratgies = ref([])
-  const stratgyJoinedPlans = ref([])
+  const plans = ref<any[]>([]);
+  const stratgies = ref<any[]>([]);
+  const stratgyJoinedPlans = ref<any[]>([]);;
 
   const showAddEditModal = ref(false)
   const addEditPlanData = ref({})

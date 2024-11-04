@@ -2,7 +2,7 @@
   <div
     class="intro-x relative my-2"
     :class="{
-      'bg-gray-100': isEven(index),
+      
       'shadow-md dark:shadow-slate-600': fullDetails,
       'shadow-sm dark:shadow-slate-600': !fullDetails
     }"
@@ -50,7 +50,7 @@
         <div class="flex flex-col mb-0">
           <div class="font-semibold">Broker</div>
           <div v-if="position.broker" class="flex items-center">
-            {{ `${position.broker.broker_name} - ${position.broker.broker_userid}` }}
+            {{ `${position.broker.broker_name} - ${position.broker.id}` }}
           </div>
           <div v-else>_</div>
         </div>
@@ -145,7 +145,10 @@
     }
     return false
   }
-  const isEven = (index: number) => index % 2 === 0
+
+  const deleteSqOff = (position : any) => {
+    console.log(position)
+  }
 
 
   const last_price = computed(() => {

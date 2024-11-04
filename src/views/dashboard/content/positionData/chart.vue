@@ -2,7 +2,7 @@
   <div class="bg-[#141313] rounded-lg">
 
     <!-- Strategy List Section -->
-    <div class="">
+    <div>
       <div
         v-for="(strategy, index) in chartData.labels"
         :key="index"
@@ -13,7 +13,6 @@
           :class="strategyPNL[index] > 0 ? 'text-green-600' : 'text-red-600'"
         >
           {{ `₹${strategyPNL[index].toFixed(2)} ` }}
-          
         </span>
       </div>
     </div>
@@ -32,32 +31,30 @@ const { strategiesPositions, isTabActive } = storeToRefs(positionsStore);
 // Refs and state
 const totalPNL = ref(0);
 
-
-
 // Chart Data
 const chartData = computed(() => {
-  const data =  Object.values(positionsStore.strategiesPositions);
+  const data: any[] = Object.values(positionsStore.strategiesPositions);
 
   let chartValue = {
-    labels: data.map(strategy => strategy.name),
+    labels: data.map((strategy: any) => strategy.name),
     datasets: [
       {
-        data: data.map(strategy => strategy.positions.length),
-        backgroundColor: data.map(strategy => strategy.color),
+        data: data.map((strategy: any) => strategy.positions.length),
+        backgroundColor: data.map((strategy: any) => strategy.color),
       },
     ],
   };
 
   // Update Total Profit
-  totalPNL.value = data.reduce((total, strategy) => total + parseFloat(strategy.pnl), 0);
+  totalPNL.value = data.reduce((total: number, strategy: any) => total + parseFloat(strategy.pnl), 0);
 
   return chartValue;
 });
 
 // Strategy PNL (Profit and Loss)
 const strategyPNL = computed(() => {
-  const data = Object.values(positionsStore.strategiesPositions || {});
+  const data: any[] = Object.values(positionsStore.strategiesPositions || {});
 
-  return data.map(strategy => parseFloat(strategy.pnl));
+  return data.map((strategy: any) => parseFloat(strategy.pnl));
 });
 </script>

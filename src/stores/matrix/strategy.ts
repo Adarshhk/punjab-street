@@ -2,12 +2,24 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { makeRequest, state } from '@/request/request'
 
+interface StrategyJoinedPlan {
+    id: number;
+    broker_id: number;
+    strategy_id: number;
+    domain_id: number;
+    lots: number;
+    re_entry: number;
+    re_entry_triggered: number;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
+  }
 export const useStrategiesStore = defineStore('strategies', () => {
   const endpoint = 'plan_strategy'
   const wait =0
   const strategies = ref<any>([])
   const plans = ref<any>([])
-  const stratgyJoinedPlans = ref([]) 
+  const stratgyJoinedPlans = ref<StrategyJoinedPlan[]>([]);
   const showMessage = ref<boolean>(false)
   const message = ref<string>('')
   

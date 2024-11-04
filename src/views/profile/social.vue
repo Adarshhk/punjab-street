@@ -36,7 +36,7 @@
         <div class="ml-4 mt-4">
           <label class="block mb-4 text-sm font-medium text-white" for="status">Status</label>
           <div class="mt-2">
-            <ButtonSwitch id="is_active" :disabled="!isEditing" name="is_active" v-model.trim="socialData.status" @update:modelValue.trim="(value) => {
+            <ButtonSwitch id="is_active" :disabled="!isEditing" name="is_active" v-model.trim="socialData.status" @update:modelValue.trim="(value : any) => {
               socialData.status = value
             }" />
           </div>

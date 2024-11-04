@@ -15,7 +15,7 @@
       {{ position.status }}
     </td>
     <td class=" pr-4 py-4 whitespace-nowrap text-right text-sm font-medium">
-      <button :id="key" @click="toggleDetails" class="text-white hover:text-teal-900">
+      <button @click="toggleDetails" class="text-white hover:text-teal-900">
         <RightArrowIcon class="w-[12px] h-[12px] inline ml-1 transform transition" :class="{ 'rotate-[-90deg]': fullDetails, 'rotate-90': !fullDetails }" />
       </button>
     </td>
@@ -109,6 +109,10 @@ const toggleDetails = () =>[
   fullDetails.value = !fullDetails.value
 ]
 
+const deleteSqOff = (position : any) => {
+
+  console.log('sqoff')
+}
 const pnl = computed(() => {
   let result = 0
   if (position.value.status === 'OPEN') {

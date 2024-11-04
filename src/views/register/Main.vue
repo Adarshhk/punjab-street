@@ -261,10 +261,10 @@ const tncUrl = ref<string>('')
 const privacyPolicyUrl = ref<string>('')
 
 // Password visibility control
-const passwordFields = reactive({
+const passwordFields: { [key: string]: any } = reactive({
   password: false,
-  confirm_password: false
-})
+  confirm_password: false,
+});
 
 // Function to toggle password visibility
 function togglePasswordVisibility(field: string) {

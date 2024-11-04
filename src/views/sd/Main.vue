@@ -170,7 +170,7 @@ onUnmounted(() => {
   if (datepicker.value) {
     datepicker.value = null;
   }
-  strategyName.value = '';
+  strategyName.value = [];
   strartegyDetails.value = [];
 });
 
@@ -181,7 +181,7 @@ const fetchData = async () => {
   let endDate = new Date(selectedDate.value.split(" to ")[1]).toISOString();
   if (showFilter.value) {
     let data = {
-      "id": parseInt(strategyName.value),
+      "id": strategyName.value,
       "start_date": startDate,
       "end_date": endDate
     };
